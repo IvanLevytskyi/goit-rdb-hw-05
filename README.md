@@ -50,16 +50,6 @@ print(dataset_dir)   # шлях до папки з CSV
 2. Запустіть notebook у Google Colab. Для Colab завантажте файл через **File → Upload notebook**.
 5. Виконуйте клітинки **послідовно зверху вниз** (Run all). Порядок важливий: typed-таблиці створюються після raw.
 
-## Структура завдань
-
-| Завдання | Що робиться | Ключові об'єкти |
-|---|---|---|
-| 2.1 DML | 4 ідемпотентні DML з `RETURNING`: `UPDATE ... IS DISTINCT FROM`, upsert `ON CONFLICT DO UPDATE`, `ON CONFLICT DO NOTHING`, data-modifying CTE `DELETE ... RETURNING → INSERT` | `olist_orders.is_late`, `seller_score`, `seller_alerts`, `seller_alerts_archive` |
-| 2.2 CTE pipeline | Feature engineering per customer, 12 named stages | RFM, `cohort_quarter`, `avg_order_value_30d`, `cancellation_rate`, `preferred_category` |
-| 3 Recursive CTE | Синтетичне referral-дерево, `depth` і `path`, захист від циклів | `hw5_referrals`, `hw5_referral_tree` |
-| 4 Materialized View | Повний pipeline у MV, `UNIQUE INDEX`, `REFRESH ... CONCURRENTLY` | `mv_customer_features` |
-| Reflection | Аналіз `EXPLAIN ANALYZE`, вибір refresh-cycle, trade-offs | — |
-
 ## CTE pipeline: stages
 
 Клієнт ідентифікується за `customer_unique_id`. В Olist `customer_id` створюється заново для кожного
